@@ -1,9 +1,8 @@
 import os
 import telebot
 
-TOKEN = os.environ.get("BOT_TOKEN")
-
+TOKEN = os.environ.get("TOKEN")
 if TOKEN is None:
-    raise ValueError("BOT_TOKEN не задан в переменных окружения")
+    raise ValueError("Переменная окружения TOKEN не найдена!")
 
 bot = telebot.TeleBot(TOKEN)
