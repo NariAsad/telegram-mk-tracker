@@ -1,11 +1,9 @@
-import telebot
 import os
+import telebot
 
-TOKEN = os.getenv("BOT_TOKEN")
+TOKEN = os.environ.get("BOT_TOKEN")
+
+if TOKEN is None:
+    raise ValueError("BOT_TOKEN не задан в переменных окружения")
+
 bot = telebot.TeleBot(TOKEN)
-
-@bot.message_handler(commands=['start'])
-def send_welcome(message):
-    bot.reply_to(message, "Бот работает!")
-
-bot.polling()
